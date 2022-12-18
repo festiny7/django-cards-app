@@ -1,0 +1,48 @@
+{% extends 'flashcards/base.html' %}
+{% load humanize %}
+{% block content %}
+
+{% if card %}
+    <h2 class="text-center mb-3">Edit Card</h2>
+{% else %}
+    <h2 class="text-center mb-3">Add New Card</h2>
+{% endif %}
+<div class="container">
+    <form action="" method="post" autocomplete="off">
+        {% csrf_token %}
+        <div class="row justify-content-center">
+            
+
+            <div class="col-4 border pt-3 px-3">
+
+                <p><input type="text" class="form-control text-capitalize" id="question" name="question" value="{{ card.question }}" placeholder="Question" required></p>
+                <p><input type="text" class="form-control text-capitalize" id="asnwer" name="answer" value="{{ card.answer }}" placeholder="Answer" required></p>
+
+                <div class="input-group mb-3">
+
+                    <label class="input-group-text" for="box_number">Box Number</label>
+
+                    <select class="form-select" id="box_number" name="box_number">
+                        <option {% if card.box_number == 1 %} selected {% endif %} value="1">One</option>
+                        <option {% if card.box_number == 2 %} selected {% endif %} value="2">Two</option>
+                        <option {% if card.box_number == 3 %} selected {% endif %} value="3">Three</option>
+                        <option {% if card.box_number == 4 %} selected {% endif %} value="4">Four</option>
+                        <option {% if card.box_number == 5 %} selected {% endif %} value="5">Five</option>
+                    </select>
+
+                </div>
+
+
+
+                <div class="vstack gap-2 mx-auto pb-3">
+                    <button type="submit" class="btn btn-success">Save changes</button>
+                    <a class="text-decoration-none text-white btn btn-danger" href="{% url 'card-list' %}" role="button">Cancel</a>
+                  </div>
+                
+            </div>
+    </form>
+</div>
+
+
+{% endblock content %}
+

@@ -1,0 +1,38 @@
+<!-- CSS-->
+<style>
+    p{
+        font-size: xx-large;
+    }
+    summary{
+        font-size: x-large;
+    }
+
+
+</style>
+
+<!-- HTML -->
+{% block content %}
+
+<div class="container" style="position:relative; text-align:end;">
+    <div class="row justify-content-center my-3">
+        <div class="col-6 bg-warning rounded-3 p-3">
+            <p class="text-center text-capitalize ">{{ card.question }}</p>
+            <hr>
+            {% if not check_card %}
+                <p class="text-center text-capitalize mt-2"><a class="text-dark" href="{% url 'card-update' card.id %}">{{ card.answer }}</a></p>
+            {% else %}
+            <details class="bg-white rounded-3 p-2">
+                <summary class="text-center text-danger">Answer</summary>
+                <p class="text-center text-capitalize mt-2"><a class="text-dark" href="{% url 'card-update' card.id %}">{{ card.answer }}</a></p>
+                {% include "flashcards/card_check_form.html" with solved=True %}
+                {% include "flashcards/card_check_form.html" with solved=False %}    
+                
+            </details>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock content %}

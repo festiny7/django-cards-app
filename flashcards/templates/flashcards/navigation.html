@@ -1,0 +1,9 @@
+
+{% load cards_tags %}
+{% load humanize %}
+
+<nav class="text-center pb-3">
+    <a href="{% url 'card-list' %}" class="btn btn-warning text-decoration-none text-black">🗃️ All Cards</a>&nbsp;&nbsp;&nbsp;
+       
+    {% boxes_as_links %}
+</nav>

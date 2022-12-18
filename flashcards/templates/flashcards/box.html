@@ -1,0 +1,24 @@
+{% extends 'flashcards/base.html' %}
+{% load humanize %}
+
+{% block content %}
+    <style>
+        footer{
+            bottom:-70px !important;
+        }
+    </style>
+
+    <h3 class="text-center">🗃️ {{ box_number | ordinal }} Box</h3>
+    <p class="text-center fs-5"><mark>{{ object_list | length }}</mark>Card{{ object_list | pluralize }} left in box.</p>
+    {% if check_card %}
+        {% include "flashcards/card.html" with card=check_card %}
+    {% endif %}
+
+
+
+{% endblock content %}
+<!--     
+    {% for card in object_list %}
+        {% include 'flashcards/card.html' %}
+    {% endfor %}
+ -->

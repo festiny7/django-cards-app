@@ -1,0 +1,17 @@
+{% extends "flashcards/base.html" %}
+{% load humanize %}
+{% block content %}
+
+{% for card in card_list %}
+    {% ifchanged %}
+        {% if card.box_number > 1 %}
+            <hr>
+            <h3 class="text-center">🗃️ {{ card.box_number | ordinal }} Box</h3>
+        {% else %}    
+            <h3 class="text-center">🗃️ {{ card.box_number | ordinal }} Box</h3>
+        {% endif %}
+    {% endifchanged %}
+    {% include 'flashcards/card.html' %}
+    {% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% load humanize %}
+
+<!-- CSS -->
+<style>
+    #new-card{
+        background-color: rgb(0, 174, 47);
+    }
+</style>
+{% for box in boxes %}
+
+    <a href="{% url 'box' box_num=box.number %}" class="btn btn-warning text-decoration-none text-black">
+
+        🎴 {{ box.number | ordinal }} Box ({{ box.card_count }})
+
+    </a>
+
+    
+
+{% endfor %}
+
+&nbsp;&nbsp;&nbsp; <a class="btn text-decoration-none text-white" id="new-card" href="{% url 'card-create' %}">New Card</a>
